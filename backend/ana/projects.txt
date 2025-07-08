@@ -1,0 +1,13 @@
+Projets personnels et académiques:
+
+- Application mobile de génération de lettres de motivation
+
+Technos : Spring Boot, Flutter, MySQL, OpenAI API
+
+- Application web e-banking basée sur microservices
+
+Stack : Spring Boot, MySQL, Docker, Railway
+
+- Application web de location de vêtements traditionnels
+
+Stack : Spring Boot, MySQL, Docker, Railway

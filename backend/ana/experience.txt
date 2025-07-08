@@ -1,0 +1,22 @@
+Expérience Professionnelle:
+
+Fév. 2025 – Présent : Stage développeur Full Stack & AI – Gear9
+
+- Développement de microservices pour une plateforme de controle et sécurité
+
+- Conception d’un chatbot interne avec IA (Langchain, FastAPI, etc.)
+
+Juillet 2024 – Août 2024 : Stage développeur Full Stack – Xelops Technology (ex Neoxia Maroc)
+
+- Application web de gestion d'API
+
+Stack : ReactJs, NestJs, MySQL
+
+Fév. 2023 – Mai 2023 : Stage développeur mobile (Flutter) – Tasmim Web
+
+- Application mobile connectée à WooCommerce via API
+Stack : Flutter , Dart
+
+Avr. 2022 – Mai 2022 : Stage développeur backend – Yadou Soft
+
+- Application web de gestion de cabinets dentaires

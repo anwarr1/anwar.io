@@ -1,0 +1,7 @@
+Compétences techniques : 
+Langages : Java, Python, JavaScript, Dart / Flutter
+Frameworks : Spring Boot, React, FastApi, Tailwind CSS, HTML/CSS
+Base de données : MySQL, Oracle, SQL Server, ChromaDB
+DevOps & Outils : Docker, Git, Railway
+Outils IA : FastAPI, LangChain, RAG, HuggingFace
+Méthodologies : Agile (Scrum),Jira
