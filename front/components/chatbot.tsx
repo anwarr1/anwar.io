@@ -52,7 +52,7 @@ export function Chatbot({ onClose }: ChatbotProps) {
       }
 
       const sessionId = localStorage.getItem("chat_session_id");
-      const response = await fetch("http://localhost:8000/chat", {
+      const response = await fetch("https://anwar-io.onrender.com/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
