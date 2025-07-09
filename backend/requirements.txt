@@ -57,7 +57,7 @@ langchain-google-genai==2.1.6
 langchain-huggingface==0.3.0
 langchain-text-splitters==0.3.8
 langsmith==0.4.4
-langchain-chroma>=0.0.1
+langchain-chroma>=0.2.4
 markdown-it-py==3.0.0
 MarkupSafe==3.0.2
 marshmallow==3.26.1
