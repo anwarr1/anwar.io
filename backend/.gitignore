@@ -1,9 +1,10 @@
-# Virtual environment
-new_env/
-
-# Bytecode cache
 __pycache__/
 *.pyc
-
-# Environment variables
+*.pyo
+*.pyd
 .env
+.git
+.gitignore
+.DS_Store
+chat_history.txt
+new_env
