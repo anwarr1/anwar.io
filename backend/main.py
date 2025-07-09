@@ -60,7 +60,7 @@ async def chat(request:Request,req: ChatRequest):
     }
   
     with open("./chat_history.txt", "a", encoding="utf-8") as f:
-        f.write(f"{metadata['timestamp']} - {metadata['ip']} - {metadata['user_agent']} - Q: {metadata['question']} - A: {metadata['response']}\n")
+        f.write(f"{metadata['timestamp']} - {metadata['ip']} - {metadata['user_agent']} - Q: {metadata['question']} - A: {metadata['response']}\n\n")
     
     # Add current Q&A to history
     history.append((req.question, response["answer"]))
@@ -74,3 +74,13 @@ async def chat(request:Request,req: ChatRequest):
 @app.get("/health")
 def health():
     return {"status": "ok"}
+
+@app.get("/chat-history")
+def get_chat_history():
+    file_path = "./chat_history.txt"
+    if not os.path.exists(file_path):
+        return {"error": "Chat history file not found"}
+    with open(file_path, "r", encoding="utf-8") as f:
+        lines = f.readlines()
+    return {"history": lines}
+

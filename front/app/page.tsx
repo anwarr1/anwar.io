@@ -9,11 +9,13 @@ import { Projects } from "@/components/projects"
 import { Experience } from "@/components/experience"
 import { Contact } from "@/components/contact"
 import { Chatbot } from "@/components/chatbot"
+import { WelcomePopup } from "@/components/welcome-popup"
 import { MessageCircle, X } from "lucide-react"
 
 export default function Portfolio() {
   const [isChatOpen, setIsChatOpen] = useState(false)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const [showWelcomePopup, setShowWelcomePopup] = useState(false)
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -22,6 +24,23 @@ export default function Portfolio() {
     window.addEventListener("mousemove", handleMouseMove)
     return () => window.removeEventListener("mousemove", handleMouseMove)
   }, [])
+
+  // Welcome popup logic
+  useEffect(() => {
+    const hasVisited = localStorage.getItem('portfolio-visited')
+    if (!hasVisited) {
+      // Show popup after a short delay for better UX
+      const timer = setTimeout(() => {
+        setShowWelcomePopup(true)
+      }, 1000)
+      return () => clearTimeout(timer)
+    }
+  }, [])
+
+  const handleCloseWelcomePopup = () => {
+    setShowWelcomePopup(false)
+    localStorage.setItem('portfolio-visited', 'true')
+  }
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden relative">
@@ -75,6 +94,12 @@ export default function Portfolio() {
           <Chatbot onClose={() => setIsChatOpen(false)} />
         </div>
       )}
+
+      {/* Welcome Popup */}
+      <WelcomePopup 
+        isOpen={showWelcomePopup} 
+        onClose={handleCloseWelcomePopup} 
+      />
     </div>
   )
 }

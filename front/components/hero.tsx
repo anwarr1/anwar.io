@@ -40,7 +40,7 @@ export function Hero() {
         <div className="relative mb-8">
           <div className="w-32 h-32 mx-auto rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 p-1">
             <img
-              src="/placeholder.svg?height=128&width=128"
+              src="/pic.jpg?height=128&width=128"
               alt="Profile"
               className="w-full h-full rounded-full object-cover bg-gray-800"
             />
