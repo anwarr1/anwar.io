@@ -47,7 +47,11 @@ export function Chatbot({ onClose }: ChatbotProps) {
     try {
       // Prepare messages for backend (include conversation history)
       const allMessages = [...messages, userMessage];
+      if (!localStorage.getItem("chat_session_id")) {
+        localStorage.setItem("chat_session_id", crypto.randomUUID());
+      }
 
+      const sessionId = localStorage.getItem("chat_session_id");
       const response = await fetch("http://localhost:8000/chat", {
         method: "POST",
         headers: {
@@ -55,6 +59,7 @@ export function Chatbot({ onClose }: ChatbotProps) {
         },
         body: JSON.stringify({
           question: userMessage.content,
+          session_id: sessionId,
         }),
       });
 
