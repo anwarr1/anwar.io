@@ -6,7 +6,6 @@ from datetime import datetime
 
 
 app = FastAPI()
-qa_chain = get_qa_chain()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # or "*" for dev
@@ -24,6 +23,7 @@ class ChatRequest(BaseModel):
 
 @app.post("/chat")
 async def chat(request:Request,req: ChatRequest):
+    qa_chain = get_qa_chain()
     session_id = req.session_id
 
     # Get or create session history
