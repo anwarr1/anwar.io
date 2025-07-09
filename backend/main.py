@@ -3,6 +3,9 @@ from pydantic import BaseModel
 from chatbot import get_qa_chain
 from fastapi.middleware.cors import CORSMiddleware
 from datetime import datetime
+import os
+from dotenv import load_dotenv
+print(f"Starting server on port: {os.getenv('PORT', '8080')}")
 
 
 app = FastAPI()
