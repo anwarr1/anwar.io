@@ -1,4 +1,4 @@
-from fastapi import FastAPI,Request
+from fastapi import FastAPI,Request,HTTPException
 from pydantic import BaseModel
 from chatbot import get_qa_chain
 from fastapi.middleware.cors import CORSMiddleware
@@ -13,7 +13,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
+qa_chain = None
 chat_histories = {}
 
 class ChatRequest(BaseModel):
@@ -23,7 +23,17 @@ class ChatRequest(BaseModel):
 
 @app.post("/chat")
 async def chat(request:Request,req: ChatRequest):
-    qa_chain = get_qa_chain()
+    global qa_chain 
+     # Lazy-load only once
+    if qa_chain is None:
+        print("⏳ Initializing QA chain...")
+        try:
+            qa_chain = get_qa_chain()
+            print("✅ QA chain ready.")
+        except Exception as e:
+            print(f"❌ QA chain load failed: {e}")
+            raise HTTPException(status_code=500, detail="LLM chain initialization failed")
+        
     session_id = req.session_id
 
     # Get or create session history
@@ -57,3 +67,7 @@ async def chat(request:Request,req: ChatRequest):
         "answer": response["answer"], 
 
     }
+
+@app.get("/health")
+def health():
+    return {"status": "ok"}
