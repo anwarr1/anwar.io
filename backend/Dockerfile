@@ -1,25 +1,18 @@
 # Use the official Python image from the Docker Hub
 FROM python:3.12-slim
 
-
+# Set the working directory inside the container
 WORKDIR /app
 
-# Install system dependencies for scientific libraries
-RUN apt-get update && \
-    apt-get install -y build-essential gcc && \
-    apt-get clean
-
-# Copy files
+# Copy the current directory contents into the container at /app
 COPY . /app
 
-# Install Python deps
-RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt
+# Install the required Python packages
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Clean up build tools (optional, if not needed after pip install)
-RUN apt-get purge -y build-essential gcc && \
-    apt-get autoremove -y
-
+# Expose the port that FastAPI will run on
 EXPOSE 8080
 
+# Command to run the application using Uvicorn
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
+
