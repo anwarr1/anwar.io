@@ -37,7 +37,7 @@ def get_qa_chain(persist_dir="db"):
     print("🤖 Initializing Gemini LLM...")
   
     llm = ChatGoogleGenerativeAI(
-          model="gemini-2.5-flash-preview-04-17",
+          model="gemini-2.5-flash-lite-preview-06-17",
           temperature=0.7
       )
       
